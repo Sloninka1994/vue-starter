@@ -10,7 +10,7 @@
         <div v-else>
             <login-form @login="logMeIn($event)"></login-form>
         </div>
-
+		
     </div>
 </template>
 
@@ -24,7 +24,7 @@
         data() {
             return {
                 authenticatedUsername: '',
-            }
+            };
         },
         methods: {
             logMeIn(username) {

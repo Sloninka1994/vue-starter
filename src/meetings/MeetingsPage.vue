@@ -1,8 +1,8 @@
 <template>
     <div>
         <h2>Zajęcia</h2>
-        <new-meeting-form @added="addNewMeeting($event)"></new-meeting-form>
-        <meetings-list :meetings="meetings"></meetings-list>
+        <new-meeting-form v-if="showNewMeetingForm" @added="addNewMeeting($event)"></new-meeting-form>
+        <button v-else @click="displayNewMeetingForm">Dodaj nowe spotkanie</button>
     </div>
 </template>
 
@@ -13,12 +13,16 @@
         components: {NewMeetingForm, MeetingsList},
         data() {
             return {
-                meetings: []
+                meetings: [],
+				showNewMeetingForm: false
             };
         },
         methods: {
             addNewMeeting(meeting) {
                 this.meetings.push(meeting);
+            },
+			displayNewMeetingForm() {
+                this.showNewMeetingForm = true;
             }
         }
     }
