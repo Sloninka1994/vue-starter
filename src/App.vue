@@ -1,15 +1,15 @@
 <template>
     <div>
-        <h1>Witaj w systemie do zapisów na zajęcia</h1>
+        <h1>System do zapisów na zajęcia</h1>
 
         <div v-if="authenticatedUsername">
             <user-panel :username="authenticatedUsername" @logout="logMeOut()"></user-panel>
-            <meetings-page></meetings-page>
         </div>
 
         <div v-else>
             <login-form @login="logMeIn($event)"></login-form>
         </div>
+		<meetings-page v-show="authenticatedUsername" :user="authenticatedUsername"></meetings-page>
 		
     </div>
 </template>
