@@ -3,7 +3,8 @@
         <h2>Zajęcia</h2>
         <new-meeting-form v-if="showNewMeetingForm" @added="addNewMeeting($event)"></new-meeting-form>
         <button v-else @click="displayNewMeetingForm">Dodaj nowe spotkanie</button>
-    </div>
+		<meetings-list :meetings="meetings"></meetings-list>
+	</div>
 </template>
 
 <script>
@@ -20,6 +21,7 @@
         methods: {
             addNewMeeting(meeting) {
                 this.meetings.push(meeting);
+                this.showNewMeetingForm = false;
             },
 			displayNewMeetingForm() {
                 this.showNewMeetingForm = true;
