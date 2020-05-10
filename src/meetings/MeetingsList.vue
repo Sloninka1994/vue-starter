@@ -24,6 +24,7 @@
 					<td>
 					<td class="action-buttons">
 						<button id="enrollButton" class="button button-outline" @click="enroll(meeting)" v-if="meeting.participants.indexOf(username) < 0" >Zapisz się</button>
+						<button id="userLeaveButton" class="button button-outline" @click="leaveButton(meeting)" v-else>Wypisz się</button>
 						<button v-if="meeting.participants.length === 0" @click = "deleteMeeting(meeting)">Usuń puste spotkanie</button>	
 					</td>
 				</tr>
@@ -45,13 +46,16 @@
 			},
 			deleteMeeting(meeting) {
 				this.$emit('delete', meeting);
-			}
+			},
+            leaveButton(meeting) {
+                this.$emit('leaveMeeting', meeting)
+            }
 		}
     }
 </script>
 
 <style scoped>
-    #enrollButton {
+    #enrollButton, #userLeaveButton {
         margin-right: 4px;
     }
 	td.action-buttons {
