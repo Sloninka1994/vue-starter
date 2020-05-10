@@ -1,20 +1,26 @@
 <template>
-    <div>
-        <h2>Witaj {{ username }}</h2>
-        <a @click="$emit('logout')">Wyloguj</a>
-        <br>
+    <div id="user-panel">
+        <h3> Witaj {{ username }}!</h3>
+		<button class="button button-outline" @click="logMeOut()">Wyloguj</button>
     </div>
 </template>
 
 <script>
-    import MeetingsPage from "./meetings/MeetingsPage.vue";
     export default {
-        components: { MeetingsPage },
         props: ['username'],
         methods: {
-            addNewMeeting(meeting) {
-                this.meetings.push("nowe spotkanie");
+            logMeOut() {
+                this.$emit('logout');
             }
         }
     }
 </script>
+
+<style scoped>
+    h3 {
+        display: inline;
+    }
+    button {
+        float: right;
+    }
+</style> 
